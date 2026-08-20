@@ -107,9 +107,7 @@ const shouldCentered = computed(
 );
 
 const getAppendTo = computed(() => {
-  return appendToMain.value
-    ? `#${ELEMENT_ID_MAIN_CONTENT}>div:not(.absolute)>div`
-    : undefined;
+  return appendToMain.value ? `#${ELEMENT_ID_MAIN_CONTENT}` : undefined;
 });
 
 const { dragging, transform } = useModalDraggable(
@@ -243,7 +241,6 @@ function handleClosed() {
         cn(
           'inset-x-0 top-[10vh] mx-auto flex w-130 flex-col p-0',
           shouldFullscreen ? 'rounded-none' : 'rounded-(--radius)',
-          modalClass,
           {
             'border border-border': bordered,
             'shadow-3xl': !bordered,
@@ -255,6 +252,7 @@ function handleClosed() {
             'duration-300': !dragging,
             hidden: isClosed,
           },
+          modalClass,
         )
       "
       :force-mount="getForceMount"
